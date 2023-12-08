@@ -1,0 +1,51 @@
+﻿<Page x:Class="App1.xaml.PageRegistration"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:App1.xaml"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageRegistration">
+
+    <Grid>
+        <Button Content="Назад"
+         Background="Transparent"
+         BorderBrush="Transparent"
+         Width="50"
+         Height="25"
+         VerticalAlignment="Top"
+         Name="BtnBack"
+         HorizontalAlignment="Right" Click="BtnBack_Click"/>
+        <StackPanel
+             HorizontalAlignment="Center"
+             VerticalAlignment="Center">
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                     VerticalAlignment="Center"
+                     Width="150"
+                     Text="Введите логин:"/>
+                <TextBox 
+                     Text=""
+                     x:Name="Txblogin"/>
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                     VerticalAlignment="Center"
+                     Width="150"
+                     Text="Введите пароль:"/>
+                <PasswordBox
+                    x:Name="PsbPassword"/>
+            </StackPanel>
+            
+            <StackPanel Margin="0,5,5,0">
+                <Button Content="Создать"
+                    Click="BtnCreate_Click"
+                    Name="BtnCreate"/>
+            </StackPanel>
+            
+        </StackPanel>
+    </Grid>
+</Page>

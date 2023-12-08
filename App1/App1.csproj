@@ -35,8 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +64,60 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Class\FrameApp.cs" />
+    <Compile Include="Class\odbConnectHelper.cs" />
+    <Compile Include="Class\UserControlHelp.cs" />
+    <Compile Include="DataBase\fault.cs">
+      <DependentUpon>Requestbd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Hardware.cs">
+      <DependentUpon>Requestbd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Klient.cs">
+      <DependentUpon>Requestbd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\request.cs">
+      <DependentUpon>Requestbd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Requestbd.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Requestbd.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Requestbd.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Requestbd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Requestbd.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Requestbd.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Role.cs">
+      <DependentUpon>Requestbd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Requestbd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\sp_helpdiagrams_Result.cs">
+      <DependentUpon>Requestbd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\sysdiagrams.cs">
+      <DependentUpon>Requestbd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Users.cs">
+      <DependentUpon>Requestbd.tt</DependentUpon>
+    </Compile>
+    <Compile Include="users\UserPage.xaml.cs">
+      <DependentUpon>UserPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="xaml\PageLogin.xaml.cs">
+      <DependentUpon>PageLogin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="xaml\PageRegistration.xaml.cs">
+      <DependentUpon>PageRegistration.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,12 +126,53 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="HelpClass.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="pages\AddRequest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\AllRequest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\EditRequest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\СompletedRequest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="users\UserPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="xaml\PageLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="xaml\PageRegistration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="pages\AddRequest.xaml.cs">
+      <DependentUpon>AddRequest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\AllRequest.xaml.cs">
+      <DependentUpon>AllRequest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\EditRequest.xaml.cs">
+      <DependentUpon>EditRequest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\СompletedRequest.xaml.cs">
+      <DependentUpon>СompletedRequest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -86,6 +190,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="DataBase\Requestbd.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Requestbd.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DataBase\Requestbd.edmx.diagram">
+      <DependentUpon>Requestbd.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -100,6 +212,22 @@
   <ItemGroup>
     <Resource Include="Resources\assept-document-.png" />
     <Resource Include="Resources\document-signed.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="DataBase\Requestbd.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Requestbd.Context.cs</LastGenOutput>
+      <DependentUpon>Requestbd.edmx</DependentUpon>
+    </Content>
+    <Content Include="DataBase\Requestbd.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Requestbd.edmx</DependentUpon>
+      <LastGenOutput>Requestbd.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

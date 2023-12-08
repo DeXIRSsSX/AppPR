@@ -1,4 +1,6 @@
-﻿using System;
+﻿using App1.Class;
+using App1.pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,18 @@ namespace App1
         public MainWindow()
         {
             InitializeComponent();
+            FrameApp.frnObj = FrmManin;
+            FrmManin.Navigate(new xaml.PageLogin());
+        }
+
+        private void AddRequest_Click(object sender, RoutedEventArgs e)
+        {
+            HelpClass.MainFrame.Navigate(new AddRequest());
+        }
+
+        private void AllRequest_Click(object sender, RoutedEventArgs e)
+        {
+            HelpClass.MainFrame.Navigate(new AllRequest());
         }
     }
 }

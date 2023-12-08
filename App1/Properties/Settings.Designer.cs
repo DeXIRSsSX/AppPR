@@ -26,5 +26,7 @@ namespace App1.Properties
                 return defaultInstance;
             }
         }
+
+        public string EventSaveLogin { get; internal set; }
     }
 }
