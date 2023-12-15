@@ -41,10 +41,7 @@ namespace App1.xaml
         {
             var userObj = odbConnectHelper.entObj.Users.First(
                 x => x.Login == TxbLogin.Text && x.Password == PsbPassword.Password);
-            if (userObj != null)
-            {
-                MessageBox.Show("Нету пользователя");
-            }
+           
             UserControlHelp.iduser = userObj.id;
             switch (userObj.IDrole)
             {

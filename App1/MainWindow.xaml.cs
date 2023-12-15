@@ -26,6 +26,7 @@ namespace App1
         {
             InitializeComponent();
             FrameApp.frnObj = FrmManin;
+            odbConnectHelper.entObj = new DataBase.requestbdEntities1();
             FrmManin.Navigate(new xaml.PageLogin());
         }
 
