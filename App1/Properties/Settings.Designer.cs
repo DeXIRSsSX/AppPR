@@ -27,6 +27,19 @@ namespace App1.Properties
             }
         }
 
-        public string EventSaveLogin { get; internal set; }
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string EventSaveLogin
+        {
+            get
+            {
+                return ((string)(this["EventSaveLogin"]));
+            }
+            set
+            {
+                this["EventSaveLogin"] = value;
+            }
+        }
     }
 }

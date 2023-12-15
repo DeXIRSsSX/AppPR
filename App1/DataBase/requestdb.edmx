@@ -38,6 +38,7 @@
           <Property Name="id_hardware" Type="int" Nullable="false" />
           <Property Name="id_fault" Type="int" Nullable="false" />
           <Property Name="id_klient" Type="int" Nullable="false" />
+          <Property Name="status" Type="bit" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -63,7 +64,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="login" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="role" Type="int" Nullable="false" />
+          <Property Name="IDrole" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_request_fault">
           <End Role="fault" Type="Self.fault" Multiplicity="1" />
@@ -109,7 +110,7 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Users">
-              <PropertyRef Name="role" />
+              <PropertyRef Name="IDrole" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -210,6 +211,7 @@
           <Property Name="id_hardware" Type="Int32" Nullable="false" />
           <Property Name="id_fault" Type="Int32" Nullable="false" />
           <Property Name="id_klient" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Boolean" />
           <NavigationProperty Name="fault" Relationship="Self.FK_request_fault" FromRole="request" ToRole="fault" />
           <NavigationProperty Name="Hardware" Relationship="Self.FK_request_Hardware" FromRole="request" ToRole="Hardware" />
           <NavigationProperty Name="Klient" Relationship="Self.FK_request_Klient" FromRole="request" ToRole="Klient" />
@@ -239,8 +241,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="role" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Role1" Relationship="Self.FK_Users_Role" FromRole="Users" ToRole="Role" />
+          <Property Name="IDrole" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Users_Role" FromRole="Users" ToRole="Role" />
         </EntityType>
         <Association Name="FK_request_fault">
           <End Role="fault" Type="Self.fault" Multiplicity="1" />
@@ -286,11 +288,11 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Users">
-              <PropertyRef Name="role" />
+              <PropertyRef Name="IDrole" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="requestbdEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="requestbdEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="fault" EntityType="Self.fault" />
           <EntitySet Name="Hardware" EntityType="Self.Hardware" />
           <EntitySet Name="Klient" EntityType="Self.Klient" />
@@ -361,7 +363,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище requestbdModelContainer" CdmEntityContainer="requestbdEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище requestbdModelContainer" CdmEntityContainer="requestbdEntities1">
           <EntitySetMapping Name="fault">
             <EntityTypeMapping TypeName="requestbdModel.fault">
               <MappingFragment StoreEntitySet="fault">
@@ -397,6 +399,7 @@
                 <ScalarProperty Name="id_hardware" ColumnName="id_hardware" />
                 <ScalarProperty Name="id_fault" ColumnName="id_fault" />
                 <ScalarProperty Name="id_klient" ColumnName="id_klient" />
+                <ScalarProperty Name="status" ColumnName="status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -425,7 +428,7 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="login" ColumnName="login" />
                 <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="IDrole" ColumnName="IDrole" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

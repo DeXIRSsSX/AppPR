@@ -15,10 +15,10 @@ namespace App1.DataBase
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class requestbdEntities : DbContext
+    public partial class requestbdEntities1 : DbContext
     {
-        public requestbdEntities()
-            : base("name=requestbdEntities")
+        public requestbdEntities1()
+            : base("name=requestbdEntities1")
         {
         }
     

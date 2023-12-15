@@ -8,9 +8,9 @@ namespace App1.Class
 {
     public class UserControlHelp
     {
-        public static int id { get; set; }
-        public static string login { get; set; } = "Нет логина";
-        public static string password { get; set; }
-        public static int role { get; set; }
+        public static int iduser { get; set; }
+        public static string Login { get; set; } = "Нет логина";
+        public static string Password { get; set; }
+        public static int IDrole { get; set; }
     }
 }

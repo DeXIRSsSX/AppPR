@@ -20,6 +20,7 @@ namespace App1.DataBase
         public int id_hardware { get; set; }
         public int id_fault { get; set; }
         public int id_klient { get; set; }
+        public Nullable<bool> status { get; set; }
     
         public virtual fault fault { get; set; }
         public virtual Hardware Hardware { get; set; }

@@ -68,46 +68,46 @@
     <Compile Include="Class\odbConnectHelper.cs" />
     <Compile Include="Class\UserControlHelp.cs" />
     <Compile Include="DataBase\fault.cs">
-      <DependentUpon>Requestbd.tt</DependentUpon>
+      <DependentUpon>requestdb.tt</DependentUpon>
     </Compile>
     <Compile Include="DataBase\Hardware.cs">
-      <DependentUpon>Requestbd.tt</DependentUpon>
+      <DependentUpon>requestdb.tt</DependentUpon>
     </Compile>
     <Compile Include="DataBase\Klient.cs">
-      <DependentUpon>Requestbd.tt</DependentUpon>
+      <DependentUpon>requestdb.tt</DependentUpon>
     </Compile>
     <Compile Include="DataBase\request.cs">
-      <DependentUpon>Requestbd.tt</DependentUpon>
+      <DependentUpon>requestdb.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataBase\Requestbd.Context.cs">
+    <Compile Include="DataBase\requestdb.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Requestbd.Context.tt</DependentUpon>
+      <DependentUpon>requestdb.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataBase\Requestbd.cs">
+    <Compile Include="DataBase\requestdb.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Requestbd.tt</DependentUpon>
+      <DependentUpon>requestdb.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataBase\Requestbd.Designer.cs">
+    <Compile Include="DataBase\requestdb.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Requestbd.edmx</DependentUpon>
+      <DependentUpon>requestdb.edmx</DependentUpon>
     </Compile>
     <Compile Include="DataBase\Role.cs">
-      <DependentUpon>Requestbd.tt</DependentUpon>
+      <DependentUpon>requestdb.tt</DependentUpon>
     </Compile>
     <Compile Include="DataBase\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Requestbd.tt</DependentUpon>
+      <DependentUpon>requestdb.tt</DependentUpon>
     </Compile>
     <Compile Include="DataBase\sp_helpdiagrams_Result.cs">
-      <DependentUpon>Requestbd.tt</DependentUpon>
+      <DependentUpon>requestdb.tt</DependentUpon>
     </Compile>
     <Compile Include="DataBase\sysdiagrams.cs">
-      <DependentUpon>Requestbd.tt</DependentUpon>
+      <DependentUpon>requestdb.tt</DependentUpon>
     </Compile>
     <Compile Include="DataBase\Users.cs">
-      <DependentUpon>Requestbd.tt</DependentUpon>
+      <DependentUpon>requestdb.tt</DependentUpon>
     </Compile>
     <Compile Include="users\UserPage.xaml.cs">
       <DependentUpon>UserPage.xaml</DependentUpon>
@@ -190,12 +190,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="DataBase\Requestbd.edmx">
+    <EntityDeploy Include="DataBase\requestdb.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Requestbd.Designer.cs</LastGenOutput>
+      <LastGenOutput>requestdb.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DataBase\Requestbd.edmx.diagram">
-      <DependentUpon>Requestbd.edmx</DependentUpon>
+    <None Include="DataBase\requestdb.edmx.diagram">
+      <DependentUpon>requestdb.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -213,17 +213,16 @@
     <Resource Include="Resources\assept-document-.png" />
     <Resource Include="Resources\document-signed.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="DataBase\Requestbd.Context.tt">
+    <Content Include="DataBase\requestdb.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Requestbd.Context.cs</LastGenOutput>
-      <DependentUpon>Requestbd.edmx</DependentUpon>
+      <DependentUpon>requestdb.edmx</DependentUpon>
+      <LastGenOutput>requestdb.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="DataBase\Requestbd.tt">
+    <Content Include="DataBase\requestdb.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Requestbd.edmx</DependentUpon>
-      <LastGenOutput>Requestbd.cs</LastGenOutput>
+      <DependentUpon>requestdb.edmx</DependentUpon>
+      <LastGenOutput>requestdb.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

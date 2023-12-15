@@ -15,10 +15,10 @@ namespace App1.DataBase
     public partial class Users
     {
         public int id { get; set; }
-        public string login { get; set; }
-        public string password { get; set; }
-        public int role { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
+        public int IDrole { get; set; }
     
-        public virtual Role Role1 { get; set; }
+        public virtual Role Role { get; set; }
     }
 }

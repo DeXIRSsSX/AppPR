@@ -29,7 +29,7 @@ namespace App1.xaml
 
         private void BtnCreate_Click(object sender, RoutedEventArgs e)
         {
-            if (odbConnectHelper.entObj.Users.Count(x => x.login == Txblogin.Text) > 0)
+            if (odbConnectHelper.entObj.Users.Count(x => x.Login == Txblogin.Text) > 0)
             {
                 MessageBox.Show("Такой пользователь уже есть", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
@@ -41,9 +41,9 @@ namespace App1.xaml
                 {
                     Users UsersObj = new Users()
                     {
-                        login = Txblogin.Text,
-                        password = PsbPassword.Password,
-                        role = 1
+                        Login = Txblogin.Text,
+                        Password = PsbPassword.Password,
+                        IDrole = 1
                     };
 
                     odbConnectHelper.entObj.Users.Add(UsersObj);

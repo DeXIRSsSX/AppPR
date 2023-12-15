@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace App1.Class
 {
-      class odbConnectHelper
+     public class odbConnectHelper
     {
-        public static requestbdEntities entObj;
+        public static requestbdEntities1 entObj;
     }
 }
