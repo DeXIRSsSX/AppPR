@@ -12,12 +12,12 @@ namespace App1.DataBase
     using System;
     using System.Collections.Generic;
     
-    public partial class Users
+    public partial class User
     {
         public int id { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
-        public int IDrole { get; set; }
+        public int Idrole { get; set; }
     
         public virtual Role Role { get; set; }
     }

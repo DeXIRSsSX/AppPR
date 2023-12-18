@@ -5,6 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="Хранилище requestbdModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
         <EntityType Name="fault">
           <Key>
             <PropertyRef Name="id" />
@@ -39,6 +46,8 @@
           <Property Name="id_fault" Type="int" Nullable="false" />
           <Property Name="id_klient" Type="int" Nullable="false" />
           <Property Name="status" Type="bit" />
+          <Property Name="idEmployee" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -62,10 +71,22 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="login" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="IDrole" Type="int" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Idrole" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_request_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="request" Type="Self.request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="request">
+              <PropertyRef Name="idEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_request_fault">
           <End Role="fault" Type="Self.fault" Multiplicity="1" />
           <End Role="request" Type="Self.request" Multiplicity="*" />
@@ -102,7 +123,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Users_Role">
+        <Association Name="FK_Users_Role1">
           <End Role="Role" Type="Self.Role" Multiplicity="1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
           <ReferentialConstraint>
@@ -110,7 +131,7 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Users">
-              <PropertyRef Name="IDrole" />
+              <PropertyRef Name="Idrole" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -146,6 +167,7 @@
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="Хранилище requestbdModelContainer">
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="fault" EntityType="Self.fault" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hardware" EntityType="Self.Hardware" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Klient" EntityType="Self.Klient" Schema="dbo" store:Type="Tables" />
@@ -153,6 +175,10 @@
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_request_Employee" Association="Self.FK_request_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="request" EntitySet="request" />
+          </AssociationSet>
           <AssociationSet Name="FK_request_fault" Association="Self.FK_request_fault">
             <End Role="fault" EntitySet="fault" />
             <End Role="request" EntitySet="request" />
@@ -165,7 +191,7 @@
             <End Role="Klient" EntitySet="Klient" />
             <End Role="request" EntitySet="request" />
           </AssociationSet>
-          <AssociationSet Name="FK_Users_Role" Association="Self.FK_Users_Role">
+          <AssociationSet Name="FK_Users_Role1" Association="Self.FK_Users_Role1">
             <End Role="Role" EntitySet="Role" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
@@ -175,13 +201,21 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="requestbdModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="requests" Relationship="Self.FK_request_Employee" FromRole="Employee" ToRole="request" />
+        </EntityType>
         <EntityType Name="fault">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="fault1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="request" Relationship="Self.FK_request_fault" FromRole="fault" ToRole="request" />
+          <NavigationProperty Name="requests" Relationship="Self.FK_request_fault" FromRole="fault" ToRole="request" />
         </EntityType>
         <EntityType Name="Hardware">
           <Key>
@@ -189,7 +223,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name_hardware" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="request" Relationship="Self.FK_request_Hardware" FromRole="Hardware" ToRole="request" />
+          <NavigationProperty Name="requests" Relationship="Self.FK_request_Hardware" FromRole="Hardware" ToRole="request" />
         </EntityType>
         <EntityType Name="Klient">
           <Key>
@@ -199,7 +233,7 @@
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="fname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="request" Relationship="Self.FK_request_Klient" FromRole="Klient" ToRole="request" />
+          <NavigationProperty Name="requests" Relationship="Self.FK_request_Klient" FromRole="Klient" ToRole="request" />
         </EntityType>
         <EntityType Name="request">
           <Key>
@@ -212,6 +246,9 @@
           <Property Name="id_fault" Type="Int32" Nullable="false" />
           <Property Name="id_klient" Type="Int32" Nullable="false" />
           <Property Name="status" Type="Boolean" />
+          <Property Name="idEmployee" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_request_Employee" FromRole="request" ToRole="Employee" />
           <NavigationProperty Name="fault" Relationship="Self.FK_request_fault" FromRole="request" ToRole="fault" />
           <NavigationProperty Name="Hardware" Relationship="Self.FK_request_Hardware" FromRole="request" ToRole="Hardware" />
           <NavigationProperty Name="Klient" Relationship="Self.FK_request_Klient" FromRole="request" ToRole="Klient" />
@@ -222,9 +259,9 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="role1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Role" FromRole="Role" ToRole="Users" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Role1" FromRole="Role" ToRole="Users" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
+        <EntityType Name="sysdiagram">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
@@ -234,16 +271,28 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="Users">
+        <EntityType Name="User">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IDrole" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Role" Relationship="Self.FK_Users_Role" FromRole="Users" ToRole="Role" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Idrole" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Users_Role1" FromRole="Users" ToRole="Role" />
         </EntityType>
+        <Association Name="FK_request_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="request" Type="Self.request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="request">
+              <PropertyRef Name="idEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_request_fault">
           <End Role="fault" Type="Self.fault" Multiplicity="1" />
           <End Role="request" Type="Self.request" Multiplicity="*" />
@@ -280,40 +329,45 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Users_Role">
+        <Association Name="FK_Users_Role1">
           <End Role="Role" Type="Self.Role" Multiplicity="1" />
-          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Role">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Users">
-              <PropertyRef Name="IDrole" />
+              <PropertyRef Name="Idrole" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="requestbdEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="fault" EntityType="Self.fault" />
-          <EntitySet Name="Hardware" EntityType="Self.Hardware" />
-          <EntitySet Name="Klient" EntityType="Self.Klient" />
-          <EntitySet Name="request" EntityType="Self.request" />
-          <EntitySet Name="Role" EntityType="Self.Role" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="Users" EntityType="Self.Users" />
+        <EntityContainer Name="requestbdEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="faults" EntityType="Self.fault" />
+          <EntitySet Name="Hardwares" EntityType="Self.Hardware" />
+          <EntitySet Name="Klients" EntityType="Self.Klient" />
+          <EntitySet Name="requests" EntityType="Self.request" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_request_Employee" Association="Self.FK_request_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="request" EntitySet="requests" />
+          </AssociationSet>
           <AssociationSet Name="FK_request_fault" Association="Self.FK_request_fault">
-            <End Role="fault" EntitySet="fault" />
-            <End Role="request" EntitySet="request" />
+            <End Role="fault" EntitySet="faults" />
+            <End Role="request" EntitySet="requests" />
           </AssociationSet>
           <AssociationSet Name="FK_request_Hardware" Association="Self.FK_request_Hardware">
-            <End Role="Hardware" EntitySet="Hardware" />
-            <End Role="request" EntitySet="request" />
+            <End Role="Hardware" EntitySet="Hardwares" />
+            <End Role="request" EntitySet="requests" />
           </AssociationSet>
           <AssociationSet Name="FK_request_Klient" Association="Self.FK_request_Klient">
-            <End Role="Klient" EntitySet="Klient" />
-            <End Role="request" EntitySet="request" />
+            <End Role="Klient" EntitySet="Klients" />
+            <End Role="request" EntitySet="requests" />
           </AssociationSet>
-          <AssociationSet Name="FK_Users_Role" Association="Self.FK_Users_Role">
-            <End Role="Role" EntitySet="Role" />
+          <AssociationSet Name="FK_Users_Role1" Association="Self.FK_Users_Role1">
+            <End Role="Role" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
           <FunctionImport Name="sp_alterdiagram">
@@ -363,8 +417,16 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище requestbdModelContainer" CdmEntityContainer="requestbdEntities1">
-          <EntitySetMapping Name="fault">
+        <EntityContainerMapping StorageEntityContainer="Хранилище requestbdModelContainer" CdmEntityContainer="requestbdEntities2">
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="requestbdModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="faults">
             <EntityTypeMapping TypeName="requestbdModel.fault">
               <MappingFragment StoreEntitySet="fault">
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -372,7 +434,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Hardware">
+          <EntitySetMapping Name="Hardwares">
             <EntityTypeMapping TypeName="requestbdModel.Hardware">
               <MappingFragment StoreEntitySet="Hardware">
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -380,7 +442,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Klient">
+          <EntitySetMapping Name="Klients">
             <EntityTypeMapping TypeName="requestbdModel.Klient">
               <MappingFragment StoreEntitySet="Klient">
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -390,7 +452,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="request">
+          <EntitySetMapping Name="requests">
             <EntityTypeMapping TypeName="requestbdModel.request">
               <MappingFragment StoreEntitySet="request">
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -400,10 +462,12 @@
                 <ScalarProperty Name="id_fault" ColumnName="id_fault" />
                 <ScalarProperty Name="id_klient" ColumnName="id_klient" />
                 <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="idEmployee" ColumnName="idEmployee" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Role">
+          <EntitySetMapping Name="Roles">
             <EntityTypeMapping TypeName="requestbdModel.Role">
               <MappingFragment StoreEntitySet="Role">
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -412,7 +476,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="requestbdModel.sysdiagrams">
+            <EntityTypeMapping TypeName="requestbdModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -423,12 +487,12 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="requestbdModel.Users">
+            <EntityTypeMapping TypeName="requestbdModel.User">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="login" ColumnName="login" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="IDrole" ColumnName="IDrole" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Idrole" ColumnName="Idrole" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -470,7 +534,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />

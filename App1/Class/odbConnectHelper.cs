@@ -9,6 +9,6 @@ namespace App1.Class
 {
      public class odbConnectHelper
     {
-        public static requestbdEntities1 entObj;
+        public static requestbdEntities2 entObj;
     }
 }

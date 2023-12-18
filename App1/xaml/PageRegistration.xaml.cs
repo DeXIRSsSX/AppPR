@@ -39,11 +39,11 @@ namespace App1.xaml
                 try
 
                 {
-                    Users UsersObj = new Users()
+                    User UsersObj = new User()
                     {
                         Login = Txblogin.Text,
                         Password = PsbPassword.Password,
-                        IDrole = 1
+                        Idrole = 1
                     };
 
                     odbConnectHelper.entObj.Users.Add(UsersObj);
@@ -61,7 +61,7 @@ namespace App1.xaml
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-            FrameApp.frnObj.Navigate(new xaml.PageLogin());
+            FrameApp.frnObj.Navigate(new xaml.AllRequest());
         }
     }
 }

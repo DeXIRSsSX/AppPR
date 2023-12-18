@@ -15,10 +15,10 @@ namespace App1.DataBase
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class requestbdEntities1 : DbContext
+    public partial class requestbdEntities2 : DbContext
     {
-        public requestbdEntities1()
-            : base("name=requestbdEntities1")
+        public requestbdEntities2()
+            : base("name=requestbdEntities2")
         {
         }
     
@@ -27,13 +27,14 @@ namespace App1.DataBase
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<fault> fault { get; set; }
-        public virtual DbSet<Hardware> Hardware { get; set; }
-        public virtual DbSet<Klient> Klient { get; set; }
-        public virtual DbSet<request> request { get; set; }
-        public virtual DbSet<Role> Role { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<fault> faults { get; set; }
+        public virtual DbSet<Hardware> Hardwares { get; set; }
+        public virtual DbSet<Klient> Klients { get; set; }
+        public virtual DbSet<request> requests { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

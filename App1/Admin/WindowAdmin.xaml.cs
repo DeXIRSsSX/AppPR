@@ -10,29 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace App1.pages
+namespace App1.Admin
 {
     /// <summary>
-    /// Логика взаимодействия для AddRequest.xaml
+    /// Логика взаимодействия для WindowAdmin.xaml
     /// </summary>
-    public partial class AddRequest : Page
+    public partial class WindowAdmin : Window
     {
-        public AddRequest()
+        public WindowAdmin()
         {
             InitializeComponent();
-        }
-
-        private void TxbNameRequest_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void TxbNameClient_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
     }
 }

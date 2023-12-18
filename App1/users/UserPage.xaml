@@ -16,8 +16,8 @@
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock
-    VerticalAlignment="Center" Text="Введите ФИО:" Width="120"/>
-                <TextBox TextChanged="TxbNameClient_TextChanged" x:Name="TxbNameClient"/>
+                     VerticalAlignment="Center" Text="Создать клиента" Width="120"/>
+                <Button Content="Создать" Width="150" Height="25" Name="AddClient" Click="AddClient_Click"/>
             </StackPanel>
 
 
@@ -26,8 +26,13 @@
                 <ComboBox Name="CmbHardware"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" >
-                <TextBlock VerticalAlignment="Center" Text="Дата: "  Width="120"/>
+            <StackPanel Orientation="Horizontal"  Margin="0,5,0,0">
+                <TextBlock VerticalAlignment="Center" Text="Сотрудник: " Width="125"/>
+                <ComboBox Name="CmbEmployee"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center" Text="Дата: " Width="120"/>
                 <DatePicker/>
             </StackPanel>
 
@@ -44,7 +49,7 @@
             <StackPanel>
                 <Button Content="Добавить заявку" Name="BtnAddRequest" Height="25"/>
             </StackPanel>
-
         </StackPanel>
+        <Frame Name="FrmUsers" Grid.Column="1" NavigationUIVisibility="Hidden" />
     </Grid>
 </Window>

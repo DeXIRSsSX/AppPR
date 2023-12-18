@@ -10,5 +10,6 @@ namespace App1
     public class HelpClass
     {
         public static Frame MainFrame { get; set; }
+        
     }
 }

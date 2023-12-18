@@ -17,13 +17,13 @@ namespace App1.DataBase
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Role()
         {
-            this.Users = new HashSet<Users>();
+            this.Users = new HashSet<User>();
         }
     
         public int id { get; set; }
         public string role1 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Users> Users { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

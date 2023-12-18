@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App1.Class;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,6 +33,11 @@ namespace App1.users
         private void TxbNameRequest_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void AddClient_Click(object sender, RoutedEventArgs e)
+        {
+            FrameApp.frnObj.Navigate(new AddClient());
         }
     }
 }

@@ -24,8 +24,8 @@
             <StackPanel Orientation="Horizontal">
                 <TextBlock
                      VerticalAlignment="Center"
-                     Width="150"
-                     Text="Введите логин:"/>
+                     Width="110"
+                     Text="Введите логин:" Foreground="White"/>
                 <TextBox 
                      Text=""
                      x:Name="Txblogin"/>
@@ -34,8 +34,8 @@
             <StackPanel Orientation="Horizontal">
                 <TextBlock
                      VerticalAlignment="Center"
-                     Width="150"
-                     Text="Введите пароль:"/>
+                     Width="110"
+                     Text="Введите пароль:" Foreground="White"/>
                 <PasswordBox
                     x:Name="PsbPassword"/>
             </StackPanel>

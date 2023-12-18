@@ -17,13 +17,13 @@ namespace App1.DataBase
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Hardware()
         {
-            this.request = new HashSet<request>();
+            this.requests = new HashSet<request>();
         }
     
         public int id { get; set; }
         public string name_hardware { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<request> request { get; set; }
+        public virtual ICollection<request> requests { get; set; }
     }
 }

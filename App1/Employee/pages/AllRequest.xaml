@@ -9,13 +9,16 @@
       Title="AllRequest">
 
     <Grid>
-        <DataGrid x:Name="AllRequestDT" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid IsReadOnly="True" Name="AllRequestDT" AutoGenerateColumns="False" VerticalScrollBarVisibility="Auto">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Имя заявки" Width="*"/>
-                <DataGridTextColumn Header="ФИО клиента" Width="*"/>
-                <DataGridTextColumn Header="Оборудование" Width="110"/>
-                <DataGridTextColumn Header="Дата" Width="110"/>
-                <DataGridTextColumn Header="Тип неисправности" Width="*"/>
+                <DataGridTextColumn Header="Имя заявки" Binding="{Binding name}" Width="*"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding Klient.surname}" Width="*"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Klient.name}" Width="*"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding Klient.fname}" Width="*"/>
+                <DataGridTextColumn Header="Оборудование" Binding="{Binding name_hardware}" Width="110"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding date_request}" Width="110"/>
+                <DataGridTextColumn Header="Тип неисправности" Binding="{Binding fault}" Width="*"/>
+                <DataGridTextColumn Header="Сотрудик" Binding="{Binding Employeee.Name}"  Width="*"/>
                 <DataGridTemplateColumn Width="90" Header="Статус">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -23,7 +26,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="Описание" Width="300"/>
+                <DataGridTextColumn Header="Описание" Binding="{Binding description}" Width="300"/>
                 <DataGridTemplateColumn Width="108" Header="Редактировать">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

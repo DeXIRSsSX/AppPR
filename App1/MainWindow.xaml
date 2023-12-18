@@ -5,41 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:App1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="750" Width="1300">
-    <Grid>
+        Title="MainWindow" Height="450" Width="750">
+    <Grid Background="#FF484848">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="60"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel HorizontalAlignment="Right">
-            <Button 
-                Width="50" 
-                Height="30"
-                Margin="5" Background="White"
-                Click="AllRequest_Click"
-                ToolTip="Все заявки"
-                Name="AllRequest">
-                <Image Source="/Resources/document-signed.png" />
-            </Button>
-            
-            <Button 
-                Height="34"
-                Name="AddRequest"
-                Click="AddRequest_Click"
-                Margin="5" Cursor="Arrow" Background="White" Width="50" ToolTip="Создать заявку">
-                <Image Source="Resources\free-icon-font-plus-small-3917179.png"/>
-            </Button>
-            
-            <Button 
-                Height="33"
-                Width="50"
-                Margin="5" Background="White" ToolTip="Выполненные заявки">
-                <Image Source="C:\Users\David\source\repos\App1\App1\Resources\assept-document-.png"/>
-            </Button>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Image  Source="/Resources/iconPhone.png"/>
         </StackPanel>
         <Frame NavigationUIVisibility="Hidden"
-                   x:Name="FrmManin"
-                   Grid.Column="1"
-                   Grid.Row="0"/>
+           x:Name="FrmManin"
+           Grid.Column="1"
+           Grid.Row="0"/>
     </Grid>
 </Window>
