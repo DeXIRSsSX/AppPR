@@ -53,9 +53,14 @@ namespace App1.pages
                 Hardware = CmbHardware.SelectedItem as Hardware,
                 fault = CmbFault.SelectedItem as fault,
                 Klient = CmbClient.SelectedItem as Klient,
+                Employee = CmbEmployee.SelectedItem as Employee,
 
                 
             };
+            if (ChkBox.IsChecked == true)
+            {
+
+            }
         }
 
         private void TxbNameRequest_TextChanged(object sender, TextChangedEventArgs e)
@@ -77,7 +82,7 @@ namespace App1.pages
 
         private void ChkBox_Checked(object sender, RoutedEventArgs e)
         {
-            if (CmbClient == true)
+            if (ChkBox.IsChecked == true)
             {
                 
             }
