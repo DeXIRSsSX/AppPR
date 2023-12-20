@@ -26,22 +26,22 @@ namespace App1.pages
         {
             InitializeComponent();
             CmbHardware.SelectedValuePath = "id";
-            CmbHardware.DisplayMemberPath = "name";
+            CmbHardware.DisplayMemberPath = "name_hardware";
             CmbHardware.ItemsSource = odbConnectHelper.entObj.Hardwares.ToList();
 
             CmbEmployee.SelectedValuePath= "id";
-            CmbEmployee.DisplayMemberPath= "name";
+            CmbEmployee.DisplayMemberPath= "Name";
             CmbEmployee.ItemsSource = odbConnectHelper.entObj.Employees.ToList();
 
             CmbFault.SelectedValuePath = "id";
-            CmbFault.DisplayMemberPath = "fault";
+            CmbFault.DisplayMemberPath = "fault1";
             CmbFault.ItemsSource = odbConnectHelper.entObj.faults.ToList();
 
             CmbClient.SelectedValuePath = "id";
-            CmbClient.DisplayMemberPath = "surname";
-            CmbClient.DisplayMemberPath = "name";
-            CmbClient.DisplayMemberPath = "fname";
+            CmbClient.DisplayMemberPath = "id";
             CmbClient.ItemsSource = odbConnectHelper.entObj.Klients.ToList();
+         
+            AddRequestDT.ItemsSource = odbConnectHelper.entObj.requests.Where(x => x.status == true).ToList();
         }
         private void BtnAddRequest_Click(object sender, RoutedEventArgs e)
         {
@@ -54,10 +54,15 @@ namespace App1.pages
                 fault = CmbFault.SelectedItem as fault,
                 Klient = CmbClient.SelectedItem as Klient,
                 Employee = CmbEmployee.SelectedItem as Employee,
-
-                
             };
+
             if (ChkBox.IsChecked == true)
+            {
+                odbConnectHelper.entObj.requests.Add(requeObj);
+                odbConnectHelper.entObj.SaveChanges();
+                MessageBox.Show("Заявка успешно отправлена", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
             {
 
             }

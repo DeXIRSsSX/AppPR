@@ -1,6 +1,6 @@
 ﻿using App1.Admin;
 using App1.Class;
-using App1.Employee;
+using App1.Employees;
 using App1.pages;
 using App1.users;
 using System;

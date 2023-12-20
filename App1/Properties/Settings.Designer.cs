@@ -32,5 +32,7 @@ namespace App1.Properties {
                 return ((string)(this["requestbdConnection"]));
             }
         }
+
+        public string EventSaveLogin { get; internal set; }
     }
 }

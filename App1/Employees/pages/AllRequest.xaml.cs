@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App1.Class;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace App1.pages
         public AllRequest()
         {
             InitializeComponent();
+            AllRequestDT.ItemsSource = odbConnectHelper.entObj.requests.Where(x => x.status == true).ToList();
         }
 
         private void BtnEditRequest_Click(object sender, RoutedEventArgs e)

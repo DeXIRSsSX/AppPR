@@ -116,7 +116,7 @@
     <Compile Include="DataBase\User.cs">
       <DependentUpon>requestbd.tt</DependentUpon>
     </Compile>
-    <Compile Include="Employee\WindowEmployee.xaml.cs">
+    <Compile Include="Employees\WindowEmployee.xaml.cs">
       <DependentUpon>WindowEmployee.xaml</DependentUpon>
     </Compile>
     <Compile Include="users\AddClient.xaml.cs">
@@ -135,7 +135,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Employee\WindowEmployee.xaml">
+    <Page Include="Employees\WindowEmployee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -152,19 +152,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Employee\pages\AddRequest.xaml">
+    <Page Include="Employees\pages\AddRequest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Employee\pages\AllRequest.xaml">
+    <Page Include="Employees\pages\AllRequest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Employee\pages\EditRequest.xaml">
+    <Page Include="Employees\pages\EditRequest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Employee\pages\СompletedRequest.xaml">
+    <Page Include="Employees\pages\СompletedRequest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -186,16 +186,16 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Employee\pages\AddRequest.xaml.cs">
+    <Compile Include="Employees\pages\AddRequest.xaml.cs">
       <DependentUpon>AddRequest.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Employee\pages\AllRequest.xaml.cs">
+    <Compile Include="Employees\pages\AllRequest.xaml.cs">
       <DependentUpon>AllRequest.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Employee\pages\EditRequest.xaml.cs">
+    <Compile Include="Employees\pages\EditRequest.xaml.cs">
       <DependentUpon>EditRequest.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Employee\pages\СompletedRequest.xaml.cs">
+    <Compile Include="Employees\pages\СompletedRequest.xaml.cs">
       <DependentUpon>СompletedRequest.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">

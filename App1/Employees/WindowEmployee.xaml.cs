@@ -15,7 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace App1.Employee
+namespace App1.Employees
 {
     /// <summary>
     /// Логика взаимодействия для WindowEmployee.xaml

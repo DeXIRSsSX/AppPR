@@ -1,5 +1,7 @@
-﻿using System;
+﻿using App1.Class;
+using System;
 using System.Collections.Generic;
+using System.Data.Odbc;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,7 @@ namespace App1.pages
         public СompletedRequest()
         {
             InitializeComponent();
+            CompletedRequest.ItemsSource =odbConnectHelper.entObj.requests.Where(x => x.status == false).ToList();   
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
