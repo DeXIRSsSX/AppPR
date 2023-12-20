@@ -40,8 +40,6 @@ namespace App1.pages
             CmbClient.SelectedValuePath = "id";
             CmbClient.DisplayMemberPath = "id";
             CmbClient.ItemsSource = odbConnectHelper.entObj.Klients.ToList();
-         
-            AddRequestDT.ItemsSource = odbConnectHelper.entObj.requests.Where(x => x.status == true).ToList();
         }
         private void BtnAddRequest_Click(object sender, RoutedEventArgs e)
         {

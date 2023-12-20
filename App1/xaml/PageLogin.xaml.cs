@@ -31,6 +31,7 @@ namespace App1.xaml
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
+           
             try
             {
                 var userObj = odbConnectHelper.entObj.Users.FirstOrDefault(

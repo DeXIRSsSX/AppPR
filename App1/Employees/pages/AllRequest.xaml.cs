@@ -29,7 +29,7 @@ namespace App1.pages
 
         private void BtnEditRequest_Click(object sender, RoutedEventArgs e)
         {
-            HelpClass.MainFrame.Navigate(new EditRequest());
+            FrameApp.frnObj.Navigate(new EditRequest());
         }
     }
 }
