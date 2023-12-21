@@ -2,6 +2,7 @@
 using App1.DataBase;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,12 +47,13 @@ namespace App1.pages
             request requeObj = new request()
             {
                 name = TxbNameRequest.Text,
-                date_request = DateTime.Now,
+                date_request = DateTime.Today,
                 description = Txtbox_description.Text,
                 Hardware = CmbHardware.SelectedItem as Hardware,
                 fault = CmbFault.SelectedItem as fault,
                 Klient = CmbClient.SelectedItem as Klient,
                 Employee = CmbEmployee.SelectedItem as Employee,
+                status = ChkBox.IsChecked 
             };
 
             if (ChkBox.IsChecked == true)
@@ -60,9 +62,11 @@ namespace App1.pages
                 odbConnectHelper.entObj.SaveChanges();
                 MessageBox.Show("Заявка успешно отправлена", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            else
+            if (ChkBox.IsChecked == false)
             {
-
+                odbConnectHelper.entObj.requests.Add(requeObj);
+                odbConnectHelper.entObj.SaveChanges();
+                MessageBox.Show("Заявка успешно отправлена", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 

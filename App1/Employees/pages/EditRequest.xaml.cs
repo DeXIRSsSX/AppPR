@@ -1,4 +1,6 @@
-﻿using System;
+﻿using App1.Class;
+using App1.DataBase;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,31 @@ namespace App1.pages
     /// </summary>
     public partial class EditRequest : Page
     {
-        public EditRequest()
+
+
+        public EditRequest(request request)
         {
             InitializeComponent();
+            CmbHardware.SelectedValuePath = "id";
+            CmbHardware.DisplayMemberPath = "name_harware";
+            CmbHardware.SelectedItem = odbConnectHelper.entObj.Hardwares.ToList();
+
+            CmbFault.SelectedValuePath = "id";
+            CmbFault.DisplayMemberPath = "fault1";
+            CmbFault.ItemsSource = odbConnectHelper.entObj.faults.ToList();
+
+            TxbNameRequest.Text = request.name;
+            Txtbox_description.Text = request.description;
+
+
+        }
+
+        private void BtnEditRequest_Click(object sender, RoutedEventArgs e)
+        {
+            request requeObj = new request()
+            {
+
+            };
         }
     }
 }

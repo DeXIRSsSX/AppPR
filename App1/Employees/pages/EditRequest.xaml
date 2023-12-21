@@ -12,14 +12,8 @@
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock VerticalAlignment="Center" Text="Имя заявки: "   Width="120"/>
-                <TextBox />
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal">
-                <TextBlock
-                 VerticalAlignment="Center" Text="Введите ФИО:" Width="125" />
-                <ComboBox Name="CmbClient" Margin="0,0,0,5"/>
+                <TextBlock  VerticalAlignment="Center" Text="Имя заявки: " Width="120"/>
+                <TextBox x:Name="TxbNameRequest" />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
@@ -38,7 +32,7 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock VerticalAlignment="Center" Text="Описание: " Width="120"/>
+                <TextBlock  VerticalAlignment="Center" Text="Описание: " Width="120"/>
                 <TextBox x:Name="Txtbox_description" Height="130"/>
             </StackPanel>
 
@@ -48,7 +42,7 @@
             </StackPanel>
 
             <StackPanel>
-                <Button Content="Редактировать заявку" Name="BtnEditRequest" Height="25" Width="130"/>
+                <Button Content="Сохранить" Name="BtnEditRequest" Click="BtnEditRequest_Click" Height="25" Width="130"/>
             </StackPanel>
             
         </StackPanel>

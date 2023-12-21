@@ -38,7 +38,7 @@
 
             <StackPanel Orientation="Horizontal" >
                 <TextBlock VerticalAlignment="Center" Text="Дата: "  Width="120"/>
-                <DatePicker/>
+                <DatePicker  Name="DtDate"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
@@ -53,7 +53,7 @@
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Статус:" VerticalAlignment="Center" Width="40" />
-                <CheckBox Margin="5" Name="ChkBox" Checked="ChkBox_Checked"/>
+                <CheckBox Margin="5" Name="ChkBox" Checked="ChkBox_Checked" IsChecked="True" />
             </StackPanel>
 
             <StackPanel>

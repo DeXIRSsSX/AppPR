@@ -15,22 +15,22 @@
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding Klient.surname}" Width="*"/>
                 <DataGridTextColumn Header="Имя" Binding="{Binding Klient.name}" Width="*"/>
                 <DataGridTextColumn Header="Отчество" Binding="{Binding Klient.fname}" Width="*"/>
-                <DataGridTextColumn Header="Оборудование" Binding="{Binding name_hardware}" Width="110"/>
+                <DataGridTextColumn Header="Оборудование" Binding="{Binding Hardware.name_hardware}" Width="110"/>
                 <DataGridTextColumn Header="Дата" Binding="{Binding date_request}" Width="110"/>
-                <DataGridTextColumn Header="Тип неисправности" Binding="{Binding fault}" Width="*"/>
-                <DataGridTextColumn Header="Сотрудик" Binding="{Binding Employeee.Name}"  Width="*"/>
-                <DataGridTemplateColumn Width="90" Header="Статус">
+                <DataGridTextColumn Header="Тип неисправности" Binding="{Binding fault.fault1}" Width="120"/>
+                <DataGridTextColumn Header="Сотрудик" Binding="{Binding Employee.Name}"  Width="130"/>
+                <DataGridTemplateColumn Width="50" Header="Статус">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <CheckBox IsChecked="True"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="Описание" Binding="{Binding description}" Width="300"/>
-                <DataGridTemplateColumn Width="108" Header="Редактировать">
+                <DataGridTextColumn Header="Описание" Binding="{Binding description}" Width="240"/>
+                <DataGridTemplateColumn Width="135" Header="Редактировать">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="BtnEditRequest" Click="BtnEditRequest_Click"/>
+                            <Button Name="BtnEditRequest" Content="Редактировать" Click="BtnEditRequest_Click" Width="120" Height="25"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

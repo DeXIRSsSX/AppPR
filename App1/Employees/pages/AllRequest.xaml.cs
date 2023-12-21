@@ -1,4 +1,5 @@
 ﻿using App1.Class;
+using App1.DataBase;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +30,8 @@ namespace App1.pages
 
         private void BtnEditRequest_Click(object sender, RoutedEventArgs e)
         {
-            FrameApp.frnObj.Navigate(new EditRequest());
+           
+            FrameApp.frnObj.Navigate(new EditRequest((sender as Button).DataContext as request));
         }
     }
 }
