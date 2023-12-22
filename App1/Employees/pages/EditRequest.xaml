@@ -17,8 +17,21 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Выберете клиента: " Width="125" VerticalAlignment="Center"/>
+                <ComboBox Name="CmbClient" Margin="0,0,0,5" />
+            </StackPanel>
+
+
+            <StackPanel Orientation="Horizontal">
                 <TextBlock VerticalAlignment="Center" Text="Оборудование: " Width="125"/>
                 <ComboBox Name="CmbHardware"/>
+            </StackPanel>
+            
+            
+
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                <TextBlock VerticalAlignment="Center" Text="Сотрудник: " Width="125"/>
+                <ComboBox Name="CmbEmployee"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" >
@@ -38,7 +51,7 @@
 
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Статус:" VerticalAlignment="Center" Width="40" />
-                <CheckBox Margin="5"/>
+                <CheckBox Checked="ChkBox_Checked" Name="ChkBox" IsChecked="False" Margin="5"/>
             </StackPanel>
 
             <StackPanel>

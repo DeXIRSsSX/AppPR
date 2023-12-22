@@ -28,25 +28,55 @@ namespace App1.pages
         {
             InitializeComponent();
             CmbHardware.SelectedValuePath = "id";
-            CmbHardware.DisplayMemberPath = "name_harware";
-            CmbHardware.SelectedItem = odbConnectHelper.entObj.Hardwares.ToList();
+            CmbHardware.DisplayMemberPath = "name_hardware";
+            CmbHardware.ItemsSource = odbConnectHelper.entObj.Hardwares.ToList();
+
+            CmbClient.SelectedValuePath = "id";
+            CmbClient.DisplayMemberPath = "id";
+            CmbClient.ItemsSource = odbConnectHelper.entObj.Klients.ToList();
 
             CmbFault.SelectedValuePath = "id";
             CmbFault.DisplayMemberPath = "fault1";
             CmbFault.ItemsSource = odbConnectHelper.entObj.faults.ToList();
 
+            CmbEmployee.SelectedValuePath = "id";
+            CmbEmployee.DisplayMemberPath = "Name";
+            CmbEmployee.ItemsSource = odbConnectHelper.entObj.Employees.ToList();
+
             TxbNameRequest.Text = request.name;
             Txtbox_description.Text = request.description;
-
-
         }
 
         private void BtnEditRequest_Click(object sender, RoutedEventArgs e)
         {
             request requeObj = new request()
             {
-
+                description = Txtbox_description.Text,
+                name = TxbNameRequest.Text,
+                Hardware = CmbHardware.SelectedItem as Hardware,
+                Klient = CmbClient.SelectedItem as Klient,
+                fault =  CmbFault.SelectedItem as fault,
+                Employee = CmbEmployee.SelectedItem as Employee,
+                date_request = DateTime.Now,
+                status = ChkBox.IsChecked,
             };
+            if (ChkBox.IsChecked == true)
+            {
+                odbConnectHelper.entObj.requests.Add(requeObj);
+                odbConnectHelper.entObj.SaveChanges();
+                MessageBox.Show("Заявка успешно отправлена", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            if (ChkBox.IsChecked == false)
+            {
+                odbConnectHelper.entObj.requests.Add(requeObj);
+                odbConnectHelper.entObj.SaveChanges();
+                MessageBox.Show("Заявка успешно отправлена", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        private void ChkBox_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

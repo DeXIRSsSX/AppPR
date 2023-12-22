@@ -11,19 +11,15 @@
     <Grid Background="White">
         <DataGrid x:Name="CompletedRequest" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Имя заявки" Width="*"/>
-                <DataGridTextColumn Header="ФИО клиента" Width="*"/>
-                <DataGridTextColumn Header="Оборудование" Width="110"/>
-                <DataGridTextColumn Header="Дата" Width="110"/>
-                <DataGridTextColumn Header="Тип неисправности" Width="*"/>
-                <DataGridTemplateColumn Width="90" Header="Статус">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <CheckBox/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTextColumn Header="Описание" Width="300"/>
+                <DataGridTextColumn Header="Имя заявки" Binding="{Binding name}" Width="*"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding Klient.surname}" Width="*"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Klient.name}" Width="*"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding Klient.fname}" Width="*"/>
+                <DataGridTextColumn Header="Оборудование" Binding="{Binding Hardware.name_hardware}" Width="110"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding date_request}" Width="110"/>
+                <DataGridTextColumn Header="Тип неисправности" Binding="{Binding fault.fault1}" Width="120"/>
+                <DataGridTextColumn Header="Сотрудик" Binding="{Binding Employee.Name}"  Width="130"/>
+                <DataGridTextColumn Header="Описание" Binding="{Binding description}" Width="240"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
