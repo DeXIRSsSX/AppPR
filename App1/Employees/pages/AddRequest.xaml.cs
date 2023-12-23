@@ -47,7 +47,7 @@ namespace App1.pages
             request requeObj = new request()
             {
                 name = TxbNameRequest.Text,
-                date_request = DateTime.Today,
+               date_request = (DateTime)dateRq.SelectedDate,
                 description = Txtbox_description.Text,
                 Hardware = CmbHardware.SelectedItem as Hardware,
                 fault = CmbFault.SelectedItem as fault,
