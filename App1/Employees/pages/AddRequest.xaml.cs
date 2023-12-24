@@ -2,6 +2,7 @@
 using App1.DataBase;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
@@ -21,8 +22,11 @@ namespace App1.pages
     /// <summary>
     /// Логика взаимодействия для AddRequest.xaml
     /// </summary>
+   
     public partial class AddRequest : Page
     {
+        
+
         public AddRequest()
         {
             InitializeComponent();
@@ -44,10 +48,11 @@ namespace App1.pages
         }
         private void BtnAddRequest_Click(object sender, RoutedEventArgs e)
         {
+            
             request requeObj = new request()
             {
                 name = TxbNameRequest.Text,
-               date_request = (DateTime)dateRq.SelectedDate,
+                date_request = (DateTime)DtDate.SelectedDate,
                 description = Txtbox_description.Text,
                 Hardware = CmbHardware.SelectedItem as Hardware,
                 fault = CmbFault.SelectedItem as fault,

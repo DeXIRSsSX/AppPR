@@ -38,7 +38,7 @@
 
             <StackPanel Orientation="Horizontal" >
                 <TextBlock VerticalAlignment="Center" Text="Дата: "  Width="120"/>
-                <DatePicker  Name="DtDate"/>
+                <DatePicker  x:Name="DtDate"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
